@@ -32,17 +32,17 @@ jobs:
       run: |
         npm ci
 
-#     - name: Build
-#       run: |
-#         npm run build
-    
+    #- name: Build
+    #  run: |
+    #    npm run build
+        
     - name: Real Test
       run: |
         npm run test:unit
-       
+        
     - name: send CI_TEST_FINISH_TRIGGER
       run: |
-        curl -X POST https://api.github.com/repos/${{ github.repogitory }}/dispatches \
-        -H 'Accept: application/vnd.github.v3+json' \
-        -u ${{ secrets.GHCR_TOKEN }} \
-        -d '("event_type": "CI_TEST_FINISH_TRIGGER", "client_payload": { "repository": "'"$GITHUB_REPOSITORY"'" }}'
+        curl -X POST https://api.github.com/repos/${{ github.repository }}/dispatches \
+          -H 'Accept: application/vnd.github.v3+json' \
+          -u ${{ secrets.GHCR_TOKEN }} \
+          -d '{"event_type": "CI_TEST_FINISH_TRIGGER", "client_payload": { "repository": "'"$GITHUB_REPOSITORY"'" }}'
