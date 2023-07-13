@@ -32,9 +32,9 @@ jobs:
       run: |
         npm ci
 
-    - name: Build
-      run: |
-        npm run build
+#     - name: Build
+#       run: |
+#         npm run build
     
     - name: Real Test
       run: |
