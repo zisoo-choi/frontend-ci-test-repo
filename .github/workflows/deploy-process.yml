@@ -1,0 +1,14 @@
+name: Deploy
+
+on: 
+  repository_dispatch:
+    types: [CI_TEST_FINISH_TRIGGER]
+  
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Say Hello Frontend after CI
+        run: |
+          echo "Hello Frontend after CI!"
